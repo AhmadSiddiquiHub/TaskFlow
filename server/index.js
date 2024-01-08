@@ -7,6 +7,7 @@ const userRoute = require("./routes/userRoutes.routes");
 const todoRoute = require("./routes/todoRoutes.routes");
 const connectDB = require("./DB/db");
 const { errorHandler } = require("./middlewares/errorHandler");
+const path = require("path");
 
 // Configuring Dotenv
 require("dotenv").config();
@@ -26,6 +27,13 @@ app.use("/api/v1/todo", todoRoute);
 
 app.get("/", (req, res) => {
   res.send("Hello, From the Server!!!");
+});
+
+// Static Files
+app.use(express.static(path.join(__dirname, "../client/dist")));
+
+app.get("*", function (req, res) {
+  res.sendFile(path.join(__dirname, "../client/dist/index.html"));
 });
 
 // Error Handler Middleware
