@@ -3,7 +3,7 @@ import axios from "axios";
 // Register Thunk Method
 const register = async (userData) => {
   const { data } = await axios.post(
-    "http://localhost:8000/api/v1/user/register",
+    `${import.meta.env.VITE_BASE_URL}/api/v1/user/register`,
     userData
   );
 
@@ -13,7 +13,7 @@ const register = async (userData) => {
 // Login Thunk Method
 const login = async (userData) => {
   const { data } = await axios.post(
-    "http://localhost:8000/api/v1/user/login",
+    `${import.meta.env.VITE_BASE_URL}/api/v1/user/login`,
     userData
   );
 

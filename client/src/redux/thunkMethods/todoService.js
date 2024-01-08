@@ -9,7 +9,7 @@ const createTodo = async (todoInputData, token) => {
   };
 
   const { data } = await axios.post(
-    "http://localhost:8000/api/v1/todo/create-todo",
+    `${import.meta.env.VITE_BASE_URL}/api/v1/todo/create-todo`,
     todoInputData,
     config
   );
@@ -25,7 +25,10 @@ const getAllTodo = async (token) => {
     },
   };
 
-  const { data } = await axios.get("http://localhost:8000/api/v1/todo", config);
+  const { data } = await axios.get(
+    `${import.meta.env.VITE_BASE_URL}/api/v1/todo`,
+    config
+  );
 
   return data;
 };
@@ -39,7 +42,7 @@ export const getSingleTodo = async (id, token) => {
   };
 
   const { data } = await axios.get(
-    `http://localhost:8000/api/v1/todo/${id}`,
+    `${import.meta.env.VITE_BASE_URL}/api/v1/todo/${id}`,
     config
   );
 
@@ -55,7 +58,9 @@ export const updateSingleTodoStatus = async (todoId, subTodoData, token) => {
   };
 
   const { data } = await axios.put(
-    `http://localhost:8000/api/v1/todo/update-subTodo-status/${todoId}`,
+    `${
+      import.meta.env.VITE_BASE_URL
+    }/api/v1/todo/update-subTodo-status/${todoId}`,
     subTodoData,
     config
   );
@@ -72,7 +77,7 @@ export const updateTodo = async (todoId, todoData, token) => {
   };
 
   const { data } = await axios.put(
-    `http://localhost:8000/api/v1/todo/update-todo/${todoId}`,
+    `${import.meta.env.VITE_BASE_URL}/api/v1/todo/update-todo/${todoId}`,
     todoData,
     config
   );
@@ -89,7 +94,9 @@ const deleteSubTodo = async (todoId, subTodoId, token) => {
   };
 
   const { data } = await axios.delete(
-    `http://localhost:8000/api/v1/todo/delete-todo/${todoId}/${subTodoId}`,
+    `${
+      import.meta.env.VITE_BASE_URL
+    }/api/v1/todo/delete-todo/${todoId}/${subTodoId}`,
     config
   );
 
@@ -105,7 +112,7 @@ const deleteTodo = async (todoId, token) => {
   };
 
   const { data } = await axios.delete(
-    `http://localhost:8000/api/v1/todo/delete-todo/${todoId}`,
+    `${import.meta.env.VITE_BASE_URL}/api/v1/todo/delete-todo/${todoId}`,
     config
   );
 
